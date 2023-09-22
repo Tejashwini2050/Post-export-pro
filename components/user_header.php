@@ -7,6 +7,14 @@
             <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
          </div>
          ';
+         echo '<script>
+         setTimeout(function() {
+            var messageDiv = document.querySelector(".message");
+            if (messageDiv) {
+              messageDiv.remove();
+            }
+         }, 3700);
+       </script>';
       }
    }
 ?>
@@ -15,14 +23,15 @@
 
    <section class="flex">
 
-      <a href="home.php" class="logo">KART<span>.</span></a>
+      <a href="home.php" class="logo">POST EXPORT PRO<span>.</span></a>
 
       <nav class="navbar">
-         <a href="home.php">home</a>
-         <a href="about.php">about</a>
-         <a href="orders.php">orders</a>
-         <a href="shop.php">shop</a>
-         <a href="contact.php">contact</a>
+         <a href="home.php">Home</a>
+         <a href="about.php">About</a>
+         <a href="orders.php">Orders</a>
+         <a href="shop.php">Shop</a>
+         <a href="tracking.php">Track Order</a>
+         
       </nav>
 
       <div class="icons">
@@ -37,9 +46,11 @@
          ?>
          <div id="menu-btn" class="fas fa-bars"></div>
          <a href="search_page.php"><i class="fas fa-search"></i></a>
-         <a href="wishlist.php"><i class="fas fa-heart"></i><span>(<?= $total_wishlist_counts; ?>)</span></a>
-         <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?= $total_cart_counts; ?>)</span></a>
+         <a href="wishlist.php"><i class="fas fa-heart"></i><span>[<?= $total_wishlist_counts; ?>]</span></a>
+         <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>[<?= $total_cart_counts; ?>]</span></a>
          <div id="user-btn" class="fas fa-user"></div>
+         <div><a href="signin.php" class="sign-btn">Sign In</a></div>
+         <!-- </div> -->
       </div>
 
       <div class="profile">
@@ -54,7 +65,6 @@
          <div class="flex-btn">
             <a href="user_register.php" class="option-btn">register</a>
             <a href="user_login.php" class="option-btn">login</a>
-
          </div>
          <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
          <?php
@@ -62,7 +72,6 @@
          ?>
          <p>please login or register first!</p>
          <div class="flex-btn">
-            <a href="admin/register_admin.php" class="option-btn">Seller registration</a>
             <a href="user_register.php" class="option-btn">register</a>
             <a href="user_login.php" class="option-btn">login</a>
          </div>

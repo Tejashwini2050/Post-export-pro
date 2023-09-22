@@ -44,7 +44,7 @@ if(isset($_GET['delete'])){
 
    <?php
       $select_messages = $conn->prepare("SELECT * FROM `messages` WHERE `pid` IN(SELECT `pid` from `products` WHERE `adminid` =?)");
-      $select_messages->execute();
+      $select_messages->execute([$admin_id]);
       if($select_messages->rowCount() > 0){
          while($fetch_message = $select_messages->fetch(PDO::FETCH_ASSOC)){
    ?>

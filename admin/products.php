@@ -54,7 +54,7 @@ if (isset($_GET['delete'])) {
     $delete_id = $_GET['delete'];
 
     // Fetch product data for deletion
-    $delete_product_image = $conn->prepare("SELECT * FROM `products` WHERE id = ?");
+    $delete_product_image = $conn->prepare("SELECT * FROM `products` WHERE pid = ?");
     $delete_product_image->execute([$delete_id]);
     $fetch_delete_image = $delete_product_image->fetch(PDO::FETCH_ASSOC);
 
@@ -63,7 +63,7 @@ if (isset($_GET['delete'])) {
         unlink('../uploaded_img/' . $fetch_delete_image['image_01']);
 
         // Delete product from various tables
-        $delete_product = $conn->prepare("DELETE FROM `products` WHERE id = ?");
+        $delete_product = $conn->prepare("DELETE FROM `products` WHERE pid = ?");
         $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE pid = ?");
         $delete_wishlist = $conn->prepare("DELETE FROM `wishlist` WHERE pid = ?");
 
@@ -135,8 +135,9 @@ if (isset($_GET['delete'])) {
    <div class="box-container">
 
    <?php
-      $select_products = $conn->prepare("SELECT * FROM `products`");
-      $select_products->execute();
+   
+      $select_products = $conn->prepare("SELECT * FROM `products` WHERE adminid=?");
+      $select_products->execute([$admin_id]);
       if($select_products->rowCount() > 0){
          while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){ 
    ?>
